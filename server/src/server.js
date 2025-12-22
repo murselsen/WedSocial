@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
+import morgan from "morgan";
+
 // Middlewares
 import {
   notFoundMiddleware,
@@ -19,6 +21,8 @@ export const initServer = () => {
   app.use(express.json());
   app.use(cors());
   app.use(cookieParser());
+
+  app.use(morgan());
 
   app.use((req, res, next) => {
     console.log(req.statusCode);
