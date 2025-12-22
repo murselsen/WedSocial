@@ -2,10 +2,10 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const env = (key, defaultValue) => {
-  const processValue = process.env[key];
+const env = (key, defaultValue = "") => {
+  const value = process.env[key];
 
-  if (processValue) return processValue;
+  if (value) return value;
 
   if (defaultValue) return defaultValue;
 
