@@ -3,8 +3,6 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-import Error from "http-errors";
-
 // Middlewares
 import {
   notFoundMiddleware,
@@ -22,15 +20,16 @@ export const initServer = () => {
   app.use(cors());
   app.use(cookieParser());
 
+  app.use((req, res, next) => {
+    console.log(req.statusCode);
+    console.log(`[${req.method}] - [${req.headers.statusCode}]: ${req.url}`);
+    next();
+  });
   app.get("/", (req, res, next) => {
-    console.log("Server is running...");
-    next(
-      new Error(
-        501,
-        "❌ | Server is not running... " + "Message 2 " + "Message 3"
-      )
-    );
     res.status(200).json({
+      success: true,
+      status: 200,
+
       message: "Server is running...",
     });
   });
