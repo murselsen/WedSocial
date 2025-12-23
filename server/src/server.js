@@ -1,9 +1,7 @@
-// Express sunucu tanımlaması
+"use strict";
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-
-import createHttpError from "http-errors";
 
 // Middlewares
 import {
@@ -12,9 +10,11 @@ import {
   serverErrorHandlerMiddleware,
 } from "./middlewares/index.js";
 
+// Routers
+import { authRouter } from "./routers/index.js";
+
 // Utils
 import { env } from "./utils/index.js";
-import { create } from "domain";
 
 const PORT = env("PORT", 3000);
 
@@ -27,8 +27,6 @@ export const initServer = async () => {
 
   app.get("/", (req, res, next) => {
     try {
-      console.log("✅ | Root endpoint accessed");
-
       res.status(200).json({
         success: true,
         status: 200,
@@ -38,6 +36,8 @@ export const initServer = async () => {
       next(error);
     }
   });
+
+  app.use("/auth", authRouter);
 
   app.use(loggerMiddleware);
   app.use(notFoundMiddleware);
