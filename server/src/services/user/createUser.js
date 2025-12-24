@@ -25,14 +25,15 @@ import { passwordHash } from "../../utils/index.js";
  * @throws {Error} 500 - If there is an error creating the user in the database
  */
 const createUser = async (payload) => {
-  const existsByEmail = await isEmailTaken(payload);
+  const { email, username } = payload;
+  const existsByEmail = await isEmailTaken(email);
   if (existsByEmail)
     throw createError(
       ErrorCodes.HTTP_STATUS_CODES.CONFLICT,
       "Email is already in use"
     );
 
-  const existsByUsername = await isUsernameTaken(payload);
+  const existsByUsername = await isUsernameTaken(username);
   if (existsByUsername)
     throw createError(
       ErrorCodes.HTTP_STATUS_CODES.CONFLICT,

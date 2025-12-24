@@ -1,13 +1,7 @@
 import User from "../../db/models/user.js";
 
-// Http Errors
-import createError from "http-errors";
-
 // Auth Services
 import { signUp } from "../../services/auth/index.js";
-
-// Utils
-import { passwordHash, passwordCompare } from "../../utils/index.js";
 
 const signUpController = async (req, res, next) => {
   console.log("Inside Sign-Up Controller");
@@ -15,11 +9,11 @@ const signUpController = async (req, res, next) => {
     // Sign-up logic here
     const userPayload = req.body;
 
-    const newUser = await signUp(userPayload);
+    const signUpUser = await signUp(userPayload);
 
     res.status(200).json({
       message: "User signed up successfully",
-      data: { newUser },
+      data: { signUpUser },
     });
   } catch (error) {
     console.error("❌ | Error in sign-up controller:\n", error);
