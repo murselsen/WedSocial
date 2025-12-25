@@ -5,10 +5,8 @@ const passwordHash = async (password) => {
   let hash = 5;
   const encryptPayload = await bcrypt.hashSync(password, hash, (err, hash) => {
     if (err) {
-      console.error("Error hashing password:", err);
-      return null;
+      throw new Error("Error hashing password:", err);
     }
-    console.log("Hashed password:", hash);
   });
 
   return encryptPayload;

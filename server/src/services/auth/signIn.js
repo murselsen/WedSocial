@@ -25,7 +25,7 @@ const signIn = async (email, password) => {
   console.log("✅ Email exists. Proceeding with password verification...");
   const user = await getUserByEmail(email);
 
-  const isPasswordValid = await passwordCompare(password, user.password);
+  const isPasswordValid = passwordCompare(password, user.password);
   if (!isPasswordValid)
     throw createError(401, "Authentication failed: Incorrect password.");
 
