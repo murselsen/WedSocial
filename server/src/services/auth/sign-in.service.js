@@ -1,8 +1,8 @@
 // Services
 import { isEmailTaken, getUserByEmail } from "../user/index.js";
-
+import { createSession } from "../session/index.js";
 // Utils
-import { passwordCompare, passwordHash } from "../../utils/index.js";
+import { env, passwordCompare, passwordHash } from "../../utils/index.js";
 import createError from "http-errors";
 
 /**
@@ -22,14 +22,31 @@ const signIn = async (email, password) => {
   if (!emailExists) {
     throw createError(401, "Authentication failed: Email not found.");
   }
-  console.log("✅ Email exists. Proceeding with password verification...");
   const user = await getUserByEmail(email);
 
   const isPasswordValid = passwordCompare(password, user.password);
   if (!isPasswordValid)
     throw createError(401, "Authentication failed: Incorrect password.");
 
-  console.log("✅ Password verified successfully.");
-  return true;
+  const session = await createSession(user._id);
+
+  await user.updateOne({
+    lastLoginAt: Date.now(),
+  });
+
+  return {
+    uid: user._id.toString(),
+    username: user.username,
+    email: user.email,
+    isVerified: user.isVerified,
+    providerData: user,
+    stsTokenManager: {
+      accessToken: session.accessToken,
+      refreshToken: session.refreshToken,
+      expirationTime: session.accessTokenVaildUntil,
+    },
+    lastLoginAt: user.lastLoginAt,
+    createdAt: session.createdAt,
+  };
 };
 export default signIn;

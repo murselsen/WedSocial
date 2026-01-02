@@ -1,4 +1,4 @@
-import signInController from "./signInController.js";
-import signUpController from "./signUpController.js";
+import signInController from "./sign-in.controller.js";
+import signUpController from "./sign-up.controller.js";
 
 export { signInController, signUpController };

@@ -1,4 +1,7 @@
 "use strict";
+// Set timezone to Istanbul
+process.env.TZ = "Europe/Istanbul";
+
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";

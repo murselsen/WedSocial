@@ -1,15 +1,15 @@
 // Create User Services
-import createUser from "./createUser.js";
+import createUser from "./create-user.service.js";
 
 export { createUser };
 
 // Get User Services
-import getUserByEmail from "./getUserByEmail.js";
+import getUserByEmail from "./get-user-by-email.service.js";
 
 export { getUserByEmail };
 
 // User Validation Services
-import isEmailTaken from "./isEmailTaken.js";
-import isUsernameTaken from "./isUsernameTaken.js";
+import isEmailTaken from "./is-email-taken.service.js";
+import isUsernameTaken from "./is-username-taken.service.js";
 
 export { isEmailTaken, isUsernameTaken };

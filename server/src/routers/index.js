@@ -1,3 +1,3 @@
-import authRouter from "./auth.js";
+import authRouter from "./auth.router.js";
 
 export { authRouter };

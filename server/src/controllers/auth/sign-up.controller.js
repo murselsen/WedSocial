@@ -1,5 +1,3 @@
-import User from "../../db/models/user.js";
-
 // Auth Services
 import { signUp } from "../../services/auth/index.js";
 
@@ -13,7 +11,7 @@ const signUpController = async (req, res, next) => {
 
     res.status(200).json({
       message: "User signed up successfully",
-      data: { signUpUser },
+      data: signUpUser,
     });
   } catch (error) {
     console.error("❌ | Error in sign-up controller:\n", error);

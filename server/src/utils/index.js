@@ -4,16 +4,19 @@ import env from "./env.js";
 export { env };
 
 // Password hashing utilities
-import passwordHash from "./passwordHash.js";
-import passwordCompare from "./passwordCompare.js";
+import passwordHash from "./password-hash.util.js";
+import passwordCompare from "./password-compare.util.js";
 
 export { passwordHash, passwordCompare };
 
-// Token creation utilitys
-import createJwtToken from "./createJwtToken.js";
-import verifyJwtToken from "./verifyJwtToken.js";
+// Token creation utilities
+import createJwtToken from "./create-jwt-token.util.js";
+import verifyJwtToken from "./verify-jwt-token.util.js";
 
-// Crypto Token creation utilitys
-import createCryptoToken from "./createCryptoToken.js";
+// Crypto Token creation utilities
+import createCryptoToken from "./create-crypto-token.util.js";
 
-export { createJwtToken, verifyJwtToken, createCryptoToken };
+// Create Session Cookie utility
+import createCookie from "./create-cookie.util.js";
+
+export { createJwtToken, verifyJwtToken, createCryptoToken, createCookie };

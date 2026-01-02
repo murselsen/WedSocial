@@ -1,6 +1,6 @@
 // Uygulama giriş noktası
 import { initServer } from "./src/server.js";
-import initMongoDbConnection from "./src/db/initMongoDbConnection.js";
+import initMongoDbConnection from "./src/db/init-mongo-db-connection.js";
 console.clear();
 
 const startServer = async () => {
