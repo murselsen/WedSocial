@@ -41,6 +41,7 @@ const signIn = async (email, password) => {
     isVerified: user.isVerified,
     providerData: user,
     stsTokenManager: {
+      sessionId: session._id.toString(),
       accessToken: session.accessToken,
       refreshToken: session.refreshToken,
       expirationTime: session.accessTokenVaildUntil,

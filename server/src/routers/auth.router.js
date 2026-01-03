@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import {
   signInController,
+  signOutController,
   signUpController,
 } from "../controllers/auth/index.js";
 
@@ -14,7 +15,7 @@ authRouter.post("/signin", signInController);
 authRouter.post("/signup", signUpController);
 
 // User Sign-Out Route
-// authRouter.post("/signout");
+authRouter.post("/signout", signOutController);
 
 // // Send Verification Code Route
 // authRouter.post("/send-verification-code");

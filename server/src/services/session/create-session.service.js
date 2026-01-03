@@ -1,4 +1,4 @@
-import Session from "../../db/models/session.js";
+import Session from "../../db/models/session.model.js";
 import { Times } from "../../constants/index.js";
 import { createCryptoToken } from "../../utils/index.js";
 

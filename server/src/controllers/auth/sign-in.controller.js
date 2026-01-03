@@ -13,6 +13,7 @@ const signInController = async (req, res, next) => {
       "refreshToken",
       result.stsTokenManager.refreshToken
     );
+    await createCookie(res, "sessionId", result.stsTokenManager.sessionId);
 
     res.status(200).json({
       success: true,

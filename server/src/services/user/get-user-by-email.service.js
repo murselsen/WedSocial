@@ -1,5 +1,5 @@
 import createError from "http-errors";
-import User from "../../db/models/user.js";
+import User from "../../db/models/user.model.js";
 
 const getUserByEmail = async (email) => {
   const user = await User.findOne({

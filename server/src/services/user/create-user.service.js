@@ -1,4 +1,4 @@
-import User from "../../db/models/user.js";
+import User from "../../db/models/user.model.js";
 // Contants
 import { ErrorCodes } from "../../constants/index.js";
 
@@ -6,8 +6,8 @@ import { ErrorCodes } from "../../constants/index.js";
 import createError from "http-errors";
 
 // User Services
-import isEmailTaken from "./isEmailTaken.js";
-import isUsernameTaken from "./isUsernameTaken.js";
+import isEmailTaken from "./is-email-taken.service.js";
+import isUsernameTaken from "./is-username-taken.service.js";
 
 // Utils
 import { passwordHash } from "../../utils/index.js";

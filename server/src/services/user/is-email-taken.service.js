@@ -1,5 +1,5 @@
 // Models
-import User from "../../db/models/user.js";
+import User from "../../db/models/user.model.js";
 
 /**
  * Checks if an email address is already taken in the database.

@@ -1,5 +1,5 @@
 // Models
-import User from "../../db/models/user.js";
+import User from "../../db/models/user.model.js";
 
 /**
  * Checks if a username is already taken in the database.
