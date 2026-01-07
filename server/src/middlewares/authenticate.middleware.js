@@ -1,9 +1,10 @@
 import createError from "http-errors";
 
 import Session from "../db/models/session.model.js";
+import User from "../db/models/user.model.js";
 
-const authenticateMiddleware = (req, res, next) => {
-  console.log("Inside authenticateMiddleware");
+const authenticateMiddleware = async (req, res, next) => {
+  console.log("⚠️ | Inside authenticateMiddleware");
   try {
     // Authentication logic here
     if (!req.headers.authorization) {
@@ -24,11 +25,34 @@ const authenticateMiddleware = (req, res, next) => {
     const token = req.headers.authorization.split(" ")[1];
 
     if (!token) {
-      throw createError(401, "❌ | Authenticate Middleware | Token missing");
+      throw createError(401, "Authenticate Middleware | Token missing");
     }
 
-    console.log("✅ | Authentication successful");
-    
+    const session = await Session.findOne({
+      accessToken: token,
+    }).lean();
+
+    if (!session) {
+      throw createError(401, "Authenticate Middleware | Invalid token");
+    }
+
+    const isAccessTokenExpired =
+      new Date(session.refreshTokenVaildUntil) < new Date();
+
+    if (isAccessTokenExpired) {
+      throw createError(401, "Authenticate Middleware | Token expired");
+    }
+
+    const user = await User.findById(session.userId).lean();
+
+    if (!user) {
+      throw createError(401, "Authenticate Middleware | User not found");
+    }
+
+    req.user = user;
+
+    console.log("✅ | Authentication Middleware | Successful");
+
     next();
   } catch (error) {
     next(error);
