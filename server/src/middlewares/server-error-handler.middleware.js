@@ -1,12 +1,14 @@
-import { ErrorCodes } from "../constants/index.js";
 import { HttpError } from "http-errors";
 
 const serverErrorHandlerMiddleware = (err, req, res, next) => {
   if (err instanceof HttpError) {
+    console.log("❌ | Error: ", err);
     res.status(err.status).json({
       status: err.status,
-      message: err.name,
-      data: err,
+      data: {
+        errorCode: err.name,
+        errorMessage: err.message,
+      },
     });
   }
 };
