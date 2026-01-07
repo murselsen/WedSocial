@@ -49,12 +49,16 @@ const authenticateMiddleware = async (req, res, next) => {
       throw createError(401, "Authenticate Middleware | User not found");
     }
 
-    req.user = user;
-
     console.log("✅ | Authentication Middleware | Successful");
+
+    req.user = user;
+    console.log("User:", req.user);
+    req.session = session;
+    console.log("Session:", req.session);
 
     next();
   } catch (error) {
+    console.error("❌ | Error in Authenticate Middleware:", error);
     next(error);
   }
 };
