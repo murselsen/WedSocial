@@ -4,9 +4,10 @@
 
 ✅ | 2 POST /auth/sign-in Giriş (email/username + şifre)
 
-| 3 POST /auth/sign-out Çıkış / token iptali
+✅ | 3 POST /auth/sign-out Çıkış / token iptali
 
-| 4 GET /auth/me Oturumdaki kullanıcı bilgisi       
+| 4 GET /auth/me Oturumdaki kullanıcı bilgisi
+
 | 5 POST /auth/refresh-token Access token yenileme
 
 | 6 GET /auth/verify-email Email doğrulama linki
