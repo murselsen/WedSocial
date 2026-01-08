@@ -46,9 +46,9 @@ Proje, ölçeklenebilirlik ve performans gözetilerek MERN Stack (MongoDB, Expre
 
 Kullanılan Teknolojiler ve Gerekçeleri
 
-Frontend: Next.js & React: Sunucu taraflı işleme (SSR) sayesinde davetiye sayfalarının SEO uyumlu olması ve hızlı yüklenmesi sağlanır.
+Backend: Node.js & Express: Yüksek performanslı, asenkron yapısı sayesinde gerçek zamanlı veri işleme ve API isteklerini etkin şekilde yönetir.
 
-UI Framework: TailwindCSS: Mobil öncelikli (mobile-first) tasarım anlayışıyla, her ekran boyutunda kusursuz görünen arayüzler için kullanılmıştır.
+Frontend: React: Bileşen tabanlı mimarisi sayesinde yeniden kullanılabilir UI elemanları oluşturulur ve hızlı, dinamik kullanıcı deneyimi sağlanır.
 
 Real-time: Socket.io: Fotoğraf akışının ve moderasyon onaylarının sayfa yenilemeye gerek kalmadan (WebSocket) anlık olarak tüm cihazlara iletilmesini sağlar.
 
@@ -66,7 +66,6 @@ Guests: Her etkinliğe bağlı LCV kayıtları. Büyük etkinliklerde performans
 
 TimelineItems: Polimorfik yapıya sahip koleksiyon; fotoğraf, metin mesajı veya şarkı isteği gibi farklı içerik türlerini tek çatı altında toplar.
 
-
 🗺️ Geliştirme Yol Haritası (Roadmap)
 
 Projenin canlıya alınması için planlanan geliştirme aşamaları şunlardır:
@@ -83,4 +82,4 @@ Projenin canlıya alınması için planlanan geliştirme aşamaları şunlardır
 
 [ ] Faz 6: Final Özellikler: Moderasyon paneli, projeksiyon modu ve güvenlik testleri.
 
-Geliştirici: Mürsel | Lisans: MIT
+Geliştirici: @murselsen | Lisans: MIT License
