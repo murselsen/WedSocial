@@ -44,6 +44,7 @@
   - TimelineItems: Polimorfik yapıya sahip koleksiyon; fotoğraf, metin mesajı veya şarkı isteği gibi farklı içerik türlerini tek çatı altında toplar.
 
 > 🗺️ Geliştirme Yol Haritası (Roadmap)
+
 **Projenin canlıya alınması için planlanan geliştirme aşamaları şunlardır:**
 
 - [x] Faz 1: Çekirdek Yapı: API iskeletinin kurulması, JWT tabanlı kimlik doğrulama (Auth) ve veritabanı bağlantıları.
