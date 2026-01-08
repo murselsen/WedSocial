@@ -34,7 +34,10 @@ const refreshTokenController = async (req, res, next) => {
       success: true,
       statusCode: 200,
       message: "Refresh Token Controller reached successfully",
-      data: newSession,
+      data: {
+        accessToken: newSession.accessToken,
+        accessTokenVaildUntil: newSession.accessTokenVaildUntil,
+      },
     });
   } catch (error) {
     console.error("Error in Refresh Token Controller:", error);
