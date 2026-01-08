@@ -3,6 +3,7 @@ import { Times, ERROR_CODES } from "../../constants/index.js";
 import { createAppError, createCryptoToken } from "../../utils/index.js";
 
 import deleteSession from "./delete-session.service.js";
+import { isValidObjectId } from "mongoose";
 
 /**
  * Creates a new session for a user with access and refresh tokens.
@@ -13,7 +14,11 @@ import deleteSession from "./delete-session.service.js";
  * @throws {Error} If session creation fails
  */
 const createSession = async (userId) => {
-  if (!userId) {
+  if (
+    !userId ||
+    typeof userId !== "string" ||
+    isValidObjectId(userId) === false
+  ) {
     throw createAppError(
       ERROR_CODES.VALIDATION.INVALID_ID,
       "❌ | Create Session Service | Invalid user ID"
