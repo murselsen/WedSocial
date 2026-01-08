@@ -2,6 +2,7 @@ import { ERROR_CODES } from "../../constants/res-code.constant.js";
 import { isRefreshTokenActive } from "../../services/session/index.js";
 import reloadSession from "../../services/session/reload-session.service.js";
 import createAppError from "../../utils/create-app-error.util.js";
+import createCookie from "../../utils/create-cookie.util.js";
 
 /**
  * Handles refresh token validation and session activity check.
@@ -27,6 +28,8 @@ const refreshTokenController = async (req, res, next) => {
         "❌ | Refresh Token Controller | Refresh token is invalid or session could not be reloaded"
       );
     }
+    await createCookie(res, "sessionId", newSession._id);
+    await createCookie(res, "refreshToken", newSession.refreshToken);
     res.status(200).json({
       success: true,
       statusCode: 200,
