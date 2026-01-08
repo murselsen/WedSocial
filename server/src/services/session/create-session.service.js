@@ -1,6 +1,8 @@
 import Session from "../../db/models/session.model.js";
-import { Times } from "../../constants/index.js";
-import { createCryptoToken } from "../../utils/index.js";
+import { Times, ERROR_CODES } from "../../constants/index.js";
+import { createAppError, createCryptoToken } from "../../utils/index.js";
+
+import deleteSession from "./delete-session.service.js";
 
 /**
  * Creates a new session for a user with access and refresh tokens.
@@ -11,6 +13,14 @@ import { createCryptoToken } from "../../utils/index.js";
  * @throws {Error} If session creation fails
  */
 const createSession = async (userId) => {
+  if (
+    !userId 
+  ) {
+    throw createAppError(
+      ERROR_CODES.VALIDATION.INVALID_ID,
+      "❌ | Create Session Service | Invalid user ID"
+    );
+  }
   // accessToken ve refreshToken oluştur
   const accessToken = createCryptoToken();
   const refreshToken = createCryptoToken();
@@ -19,7 +29,7 @@ const createSession = async (userId) => {
   const accessTokenVaildUntil = new Date(Date.now() + Times.FIFTEEN_MINUTES);
   const refreshTokenVaildUntil = new Date(Date.now() + Times.ONE_WEEK);
 
-  await Session.deleteMany({ userId });
+  await deleteSession(userId);
 
   const newSession = Session.create({
     userId,
