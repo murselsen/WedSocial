@@ -1,16 +1,9 @@
-import { HttpError } from "http-errors";
+// import { HttpError } from "http-errors";
 
 const serverErrorHandlerMiddleware = (err, req, res, next) => {
-  if (err instanceof HttpError) {
-    console.log("❌ | Error: ", err);
-    res.status(err.status).json({
-      status: err.status,
-      data: {
-        errorCode: err.name,
-        errorMessage: err.message,
-      },
-    });
-  }
+  console.error("❌ | Server Error Handler Middleware:\n", err);
+
+  res.status(500).json(err);
 };
 
 export default serverErrorHandlerMiddleware;

@@ -1,11 +1,17 @@
 import jwt from "jsonwebtoken";
 import env from "./env.js";
-import createError from "http-errors";
+
+import createAppError from "./create-app-error.util.js";
+import { ERROR_CODES } from "../constants/index.js";
+
 const verifyToken = (token) => {
   const isVerified = jwt.verify(token, env("JWT_SECRET"));
 
   if (!isVerified) {
-    throw createError(401, "Verify Token failed: Invalid token");
+    throw createAppError(
+      ERROR_CODES.UTIL.INVALID_TOKEN_VERIFICATION,
+      "Verify Token failed: Invalid token"
+    );
   }
 
   return isVerified;

@@ -1,3 +1,7 @@
+// App Error create utility
+import createAppError from "./create-app-error.util.js";
+
+export { createAppError };
 // Environment variable utilities
 import env from "./env.js";
 

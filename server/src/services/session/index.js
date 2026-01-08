@@ -6,4 +6,14 @@ import getSessionById from "./get-session-by-id.service.js";
 // Delete Session Service
 import deleteSession from "./delete-session.service.js";
 
-export { createSession, getSessionById, deleteSession };
+// Token Active Services
+import isAccessTokenActive from "./is-access-token-active.service.js";
+import isRefreshTokenActive from "./is-refresh-token-active.service.js";
+
+export {
+  createSession,
+  getSessionById,
+  deleteSession,
+  isAccessTokenActive,
+  isRefreshTokenActive,
+};

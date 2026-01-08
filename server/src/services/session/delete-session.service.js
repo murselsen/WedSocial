@@ -1,8 +1,9 @@
-import createError from "http-errors";
 import { isValidObjectId } from "mongoose";
 
 import Session from "../../db/models/session.model.js";
 
+import { createAppError } from "../../utils/index.js";
+import { ERROR_CODES } from "../../constants/index.js";
 /**
  * Deletes a session from the database by its ID.
  * @async
@@ -12,15 +13,17 @@ import Session from "../../db/models/session.model.js";
  */
 const deleteSession = async (sessionId) => {
   if (!sessionId) {
-    throw createError(400, "❌ | Session Delete Service | Invalid session ID");
+    throw createAppError(
+      ERROR_CODES.VALIDATION.INVALID_ID,
+      "❌ | Session Delete Service | Invalid session ID"
+    );
   }
   if (!isValidObjectId(sessionId)) {
-    throw createError(
-      400,
+    throw createAppError(
+      ERROR_CODES.VALIDATION.INVALID_ID,
       "❌ | Session Delete Service | Invalid session ID format"
     );
   }
-
   await Session.findByIdAndDelete(sessionId);
 
   console.log(

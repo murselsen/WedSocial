@@ -1,12 +1,13 @@
 import Session from "../../db/models/session.model.js";
 
-import createError from "http-errors";
+import { createAppError } from "../../utils/index.js";
+import { ERROR_CODES } from "../../constants/index.js";
 
 const getSessionById = async (id) => {
   // Simulated database call to get session by ID
   if (!id) {
-    throw createError(
-      400,
+    throw createAppError(
+      ERROR_CODES.VALIDATION.INVALID_ID,
       "❌ | Session Get By ID Service | Invalid session ID"
     );
   }
@@ -15,8 +16,8 @@ const getSessionById = async (id) => {
   const session = await Session.findById(id);
 
   if (!session) {
-    throw createError(
-      404,
+    throw createAppError(
+      ERROR_CODES.SESSION.NOT_FOUND,
       "❌ | Session Get By ID Service | Session not found"
     );
   }

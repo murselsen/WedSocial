@@ -2,9 +2,10 @@
 import { isEmailTaken, getUserByEmail } from "../user/index.js";
 import { createSession } from "../session/index.js";
 // Utils
-import { env, passwordCompare, passwordHash } from "../../utils/index.js";
-import createError from "http-errors";
+import { passwordCompare } from "../../utils/index.js";
 
+import { createAppError } from "../../utils/index.js";
+import { ERROR_CODES } from "../../constants/index.js";
 /**
  * Authenticates a user by verifying their email and password credentials.
  * @async
@@ -20,13 +21,19 @@ const signIn = async (email, password) => {
   console.log(`Signing in user with email: ${email}`);
   const emailExists = await isEmailTaken(email);
   if (!emailExists) {
-    throw createError(401, "Authentication failed: Email not found.");
+    throw createAppError(
+      ERROR_CODES.AUTH.LOGIN_FAILED,
+      "Authentication failed: Email not found."
+    );
   }
   const user = await getUserByEmail(email);
 
   const isPasswordValid = passwordCompare(password, user.password);
   if (!isPasswordValid)
-    throw createError(401, "Authentication failed: Incorrect password.");
+    throw createAppError(
+      ERROR_CODES.AUTH.LOGIN_FAILED,
+      "Authentication failed: Incorrect password."
+    );
 
   const session = await createSession(user._id);
 
