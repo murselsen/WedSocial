@@ -2,7 +2,8 @@ import jwt from "jsonwebtoken";
 
 import env from "./env.js";
 
-import createError from "http-errors";
+import createAppError from "./create-app-error.util.js";
+import { ERROR_CODES } from "../constants/index.js";
 
 const createJwtToken = (payload, expiresIn = "1h") => {
   const token = jwt.sign(payload, env("JWT_SECRET"), {
@@ -10,7 +11,10 @@ const createJwtToken = (payload, expiresIn = "1h") => {
   });
 
   if (!token) {
-    throw createError(401, "Create Token failed: Unable to generate token");
+    throw createAppError(
+      ERROR_CODES.UTIL.INVALID_TOKEN_GENERATION,
+      "Create Token failed: Unable to generate token"
+    );
   }
 
   return token;
