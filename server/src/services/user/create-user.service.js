@@ -1,9 +1,8 @@
 import User from "../../db/models/user.model.js";
-// Contants
-import { ErrorCodes } from "../../constants/index.js";
 
 // Errors
-import createError from "http-errors";
+import { createAppError } from "../../utils/index.js";
+import { ERROR_CODES } from "../../constants/index.js";
 
 // User Services
 import isEmailTaken from "./is-email-taken.service.js";
@@ -28,25 +27,30 @@ const createUser = async (payload) => {
   const { email, username } = payload;
   const existsByEmail = await isEmailTaken(email);
   if (existsByEmail)
-    throw createError(
-      ErrorCodes.HTTP_STATUS_CODES.CONFLICT,
+    throw createAppError(
+      ERROR_CODES.USER.ALREADY_EXISTS,
       "Email is already in use"
     );
 
   const existsByUsername = await isUsernameTaken(username);
   if (existsByUsername)
-    throw createError(
-      ErrorCodes.HTTP_STATUS_CODES.CONFLICT,
+    throw createAppError(
+      ERROR_CODES.USER.ALREADY_EXISTS,
       "Username is already in use"
     );
 
   const hashedPassword = await passwordHash(payload.password);
-  if (!hashedPassword) throw createError(500, "Error hashing password");
+  if (!hashedPassword)
+    throw createAppError(
+      ERROR_CODES.USER.HASHING_FAILED,
+      "Error hashing password"
+    );
 
   payload.password = hashedPassword;
 
   const newUser = await User.create(payload);
-  if (!newUser) throw createError(500, "Error creating user");
+  if (!newUser)
+    throw createAppError(ERROR_CODES.USER.CREATE_FAILED, "Error creating user");
 
   return newUser;
 };
