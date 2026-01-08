@@ -3,6 +3,15 @@ import Session from "../../db/models/session.model.js";
 import { createAppError } from "../../utils/index.js";
 import { ERROR_CODES } from "../../constants/index.js";
 
+/**
+ * Retrieves a session from the database by its unique identifier.
+ * @async
+ * @function getSessionById
+ * @param {string} id - The unique identifier of the session to retrieve.
+ * @returns {Promise<Object>} The session object if found.
+ * @throws {AppError} Throws VALIDATION.INVALID_ID error if the id is not provided.
+ * @throws {AppError} Throws SESSION.NOT_FOUND error if no session exists with the given id.
+ */
 const getSessionById = async (id) => {
   // Simulated database call to get session by ID
   if (!id) {
