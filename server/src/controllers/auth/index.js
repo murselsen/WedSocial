@@ -6,5 +6,13 @@ import signUpController from "./sign-up.controller.js";
 import signOutController from "./sign-out.controller.js";
 // Me
 import meController from "./me.controller.js";
+// Refresh Token
+import refreshTokenController from "./refresh-token.controller.js";
 
-export { signInController, signUpController, signOutController, meController };
+export {
+  signInController,
+  signUpController,
+  signOutController,
+  meController,
+  refreshTokenController,
+};
