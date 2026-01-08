@@ -1,5 +1,7 @@
+import { ERROR_CODES } from "../../constants/res-code.constant.js";
 import { isRefreshTokenActive } from "../../services/session/index.js";
 import reloadSession from "../../services/session/reload-session.service.js";
+import createAppError from "../../utils/create-app-error.util.js";
 
 /**
  * Handles refresh token validation and session activity check.
@@ -15,14 +17,21 @@ const refreshTokenController = async (req, res, next) => {
   try {
     const { sessionId, refreshToken } = req.cookies;
 
-    const isActive = await reloadSession(sessionId);
+    const newSession = await reloadSession(sessionId);
 
-    const code = isActive ? 200 : 401;
-
-    res.status(code).json({
-      success: isActive,
-      statusCode: code,
+    if (!newSession) {
+      res.clearCookie("sessionId");
+      res.clearCookie("refreshToken");
+      throw createAppError(
+        ERROR_CODES.AUTH.REFRESH_INVALID,
+        "❌ | Refresh Token Controller | Refresh token is invalid or session could not be reloaded"
+      );
+    }
+    res.status(200).json({
+      success: true,
+      statusCode: 200,
       message: "Refresh Token Controller reached successfully",
+      data: newSession,
     });
   } catch (error) {
     console.error("Error in Refresh Token Controller:", error);
