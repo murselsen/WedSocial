@@ -16,6 +16,7 @@ const initMongoDbConnection = async (req, res, next) => {
     console.log("✅ | MongoDB connection established successfully");
   } catch (error) {
     console.error("❌ | Failed to connect to MongoDB:", error);
+    next(error);
   }
 };
 
