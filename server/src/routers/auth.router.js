@@ -5,6 +5,7 @@ import {
   signOutController,
   signUpController,
   meController,
+  refreshTokenController,
 } from "../controllers/auth/index.js";
 
 import { authenticateMiddleware } from "../middlewares/index.js";
@@ -12,13 +13,13 @@ import { authenticateMiddleware } from "../middlewares/index.js";
 const authRouter = Router();
 
 // User Sign-In Route
-authRouter.post("/signin", signInController);
+authRouter.post("/sign-in", signInController);
 
 // User Sign-Up Route
-authRouter.post("/signup", signUpController);
+authRouter.post("/sign-up", signUpController);
 
 // User Sign-Out Route
-authRouter.post("/signout", signOutController);
+authRouter.post("/sign-out", signOutController);
 
 // User Get Profile Route
 authRouter.get("/me", authenticateMiddleware, meController);
@@ -31,7 +32,9 @@ authRouter.get("/me", authenticateMiddleware, meController);
 // // Password Reset Route
 // authRouter.post("/reset-password");
 
-// // Token Refresh Route
-// authRouter.post("/refresh-token");
+// Token Refresh Route
+authRouter.post("/refresh-token", refreshTokenController);
 
+// Delete Account Route
+// authRouter.delete("/delete-account/:id");
 export default authRouter;
