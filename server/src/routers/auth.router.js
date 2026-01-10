@@ -6,6 +6,7 @@ import {
   signUpController,
   meController,
   refreshTokenController,
+  deleteAccountController,
 } from "../controllers/auth/index.js";
 
 import { authenticateMiddleware } from "../middlewares/index.js";
@@ -36,5 +37,5 @@ authRouter.get("/me", authenticateMiddleware, meController);
 authRouter.post("/refresh-token", refreshTokenController);
 
 // Delete Account Route
-// authRouter.delete("/delete-account/:id");
+authRouter.delete("/delete-account", authenticateMiddleware, deleteAccountController);
 export default authRouter;

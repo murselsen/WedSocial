@@ -6,7 +6,7 @@ import { createAppError } from "../../utils/index.js";
 import { ERROR_CODES } from "../../constants/index.js";
 /**
  * Deletes a session from the database by its ID.
- * @async
+ *  @async
  * @param {string} sessionId - The unique identifier of the session to delete.
  * @throws {Error} Throws a 400 error if sessionId is not provided or invalid.
  * @returns {Promise<void>} Resolves when the session is successfully deleted.
@@ -24,7 +24,7 @@ const deleteSession = async (sessionId) => {
       "❌ | Session Delete Service | Invalid session ID format"
     );
   }
-  await Session.findByIdAndDelete(sessionId);
+  await Session.deleteMany({ _id: sessionId });
 
   console.log(
     `✅ | Session Delete Service | Session ${sessionId} deleted successfully.`
