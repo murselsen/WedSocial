@@ -3,6 +3,11 @@ import createUser from "./create-user.service.js";
 
 export { createUser };
 
+// Delete User Services
+import deleteUser from "./delete-user.service.js";
+
+export { deleteUser };
+
 // Get User Services
 import getUserByEmail from "./get-user-by-email.service.js";
 
