@@ -9,10 +9,13 @@ import meController from "./me.controller.js";
 // Refresh Token
 import refreshTokenController from "./refresh-token.controller.js";
 
+// Delete Account
+import deleteAccountController from "./delete-account.controller.js";
 export {
   signInController,
   signUpController,
   signOutController,
   meController,
   refreshTokenController,
+  deleteAccountController,
 };
