@@ -1,0 +1,10 @@
+.layout {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    background-image: url("../../../assets/Generated_Image_rihptdrihptdrihp.png");
+    background-size: cover;
+    /* background-position: center; */
+    backdrop-filter: blur(15px);
+}
