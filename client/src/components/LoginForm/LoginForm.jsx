@@ -19,13 +19,24 @@ const LoginForm = () => {
           <label htmlFor="email" className="form-label">
             Email:
           </label>
-          <input type="email" id="email" className="form-input" />
+
+          <input
+            type="email"
+            id="email"
+            className="form-input"
+            placeholder="Please enter your email address..."
+          />
         </div>
         <div className="form-group">
           <label htmlFor="password" className="form-label">
             Password:
           </label>
-          <input type="password" id="password" className="form-input" />
+          <input
+            type="password"
+            id="password"
+            className="form-input"
+            placeholder="Please enter your password..."
+          />  
         </div>
         <div className="form-group">
           <button type="submit" className="form-submit-button">
