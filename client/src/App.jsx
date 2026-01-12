@@ -1,7 +1,8 @@
 import { useState, Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Layout from "./components/Layout/Layout";
+import PublicLayout from "./components/Layout/Public/Public";
+import PrivateLayout from "./components/Layout/Private/Private";
 
 const Login = lazy(() => import("./pages/Login"));
 
@@ -11,8 +12,11 @@ const App = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
-        <Route element={<Layout />}>
+        <Route element={<PublicLayout />}>
           <Route path="/" element={<Login />} />
+        </Route>
+        <Route element={<PrivateLayout />}>
+          {/* Private routes go here */}
         </Route>
       </Routes>
     </Suspense>
