@@ -1,0 +1,90 @@
+.login-form {
+    margin: auto;
+    width: 600px;
+    height: max-content;
+    background-color: #0e1823db;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 40px 0;
+}
+
+.form-header-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 20px;
+}
+
+.form-header-area .form-logo-title {
+    color: var(--color);
+    font-size: 2.3rem;
+    font-weight: bold;
+    font-family: "Dancing Script", cursive;
+    text-shadow: 5px 6px 5px #f7f3f315;
+    margin: 0;
+}
+
+.form-header-area .form-logo-title span {
+    color: #e4ca73c0;
+}
+
+
+.form-area {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 75%;
+
+}
+
+.form-area .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-area .form-group .form-label {
+    font-size: 1.5rem;
+    padding-inline-start: 5px;
+    font-weight: 600;
+    color: var(--color)
+}
+
+.form-area .form-group .form-input {
+    padding: 10px;
+
+    font-size: 1.35rem;
+    border-radius: 5px;
+    border: none;
+}
+
+.form-area .form-group .form-input:focus {
+    outline: 1px solid var(--color);
+}
+
+.form-area .form-group .form-submit-button {
+    padding: 15px;
+    font-size: 1.2rem;
+    background-color: var(--color);
+    color: var(--background-color);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 1.3s ease;
+
+}
+
+.form-area .form-group .form-submit-button:hover {
+    padding: 13px;
+    background-color: var(--background-color);
+    color: var(--color);
+    border: 1px solid var(--color);
+    font-weight: bold;
+}
