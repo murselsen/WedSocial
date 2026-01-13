@@ -6,6 +6,7 @@ import logo from "../../assets/logo-trans.png";
 // Modules
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import toast from "react-hot-toast";
 
 // Login Form Component - Renders the login form UI
 const LoginForm = () => {
@@ -23,6 +24,10 @@ const LoginForm = () => {
   });
   const handleSubmit = (values, actions) => {
     console.log(values);
+    toast.loading("Logging in...", { id: "loginToast" });
+    setTimeout(() => {
+      toast.success("Logged in successfully!", { id: "loginToast" });
+    }, 4000);
     actions.setSubmitting(false);
   };
   return (
