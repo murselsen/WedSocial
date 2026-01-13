@@ -3,8 +3,28 @@ import "./LoginForm.css";
 // Assets
 import logo from "../../assets/logo-trans.png";
 
-// 
+// Modules
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+
+// Login Form Component - Renders the login form UI
 const LoginForm = () => {
+  const initialFormValues = {
+    email: "",
+    password: "",
+  };
+  const validateFormSchema = Yup.object().shape({
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+  });
+  const handleSubmit = (values, actions) => {
+    console.log(values);
+    actions.setSubmitting(false);
+  };
   return (
     <div className="login-form">
       <div className="form-header-area">
@@ -14,35 +34,54 @@ const LoginForm = () => {
         </h1>
       </div>
       <p>Welcome to WedSocial! Please log in to continue.</p>
-      <div className="form-area">
-        <div className="form-group">
-          <label htmlFor="email" className="form-label">
-            Email:
-          </label>
-          <input
-            type="email"
-            id="email"
-            className="form-input"
-            placeholder="Please enter your email address..."
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password" className="form-label">
-            Password:
-          </label>
-          <input
-            type="password"
-            id="password"
-            className="form-input"
-            placeholder="Please enter your password..."
-          />
-        </div>
-        <div className="form-group">
-          <button type="submit" className="form-submit-button">
-            Log In
-          </button>
-        </div>
-      </div>
+      <Formik
+        validationSchema={validateFormSchema}
+        initialValues={initialFormValues}
+        onSubmit={handleSubmit}
+      >
+        <Form className="form-area">
+          <div className="form-group">
+            <label htmlFor="email" className="form-label">
+              <span>Email:</span>{" "}
+              <ErrorMessage
+                component={"span"}
+                className="form-error-message"
+                name="email"
+              />
+            </label>
+            <Field
+              type="email"
+              id="email"
+              name="email"
+              className="form-input"
+              placeholder="Please enter your email address..."
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password" className="form-label">
+              <span>Password:</span>{" "}
+              <ErrorMessage
+                component={"span"}
+                className="form-error-message"
+                name="password"
+              />
+            </label>
+            <Field
+              type="password"
+              id="password"
+              name="password"
+              className="form-input"
+              autoComplete="on"
+              placeholder="Please enter your password..."
+            />
+          </div>
+          <div className="form-group">
+            <button type="submit" className="form-submit-button">
+              Log In
+            </button>
+          </div>
+        </Form>
+      </Formik>
       <div className="form-footer-area">
         <p className="form-footer-detail">
           <span>&copy;</span> 2026 WedSocial. All rights reserved.
