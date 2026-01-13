@@ -1,9 +1,9 @@
-import React from "react";
-
+// Css
 import "./LoginForm.css";
-
+// Assets
 import logo from "../../assets/logo-trans.png";
 
+// 
 const LoginForm = () => {
   return (
     <div className="login-form">
@@ -19,7 +19,6 @@ const LoginForm = () => {
           <label htmlFor="email" className="form-label">
             Email:
           </label>
-
           <input
             type="email"
             id="email"
@@ -36,7 +35,7 @@ const LoginForm = () => {
             id="password"
             className="form-input"
             placeholder="Please enter your password..."
-          />  
+          />
         </div>
         <div className="form-group">
           <button type="submit" className="form-submit-button">
