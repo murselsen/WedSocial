@@ -7,9 +7,15 @@ import logo from "../../assets/logo-trans.png";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+
+// Auth Slice Thunks
+import { signIn } from "../../redux/auth/thunk.js";
 
 // Login Form Component - Renders the login form UI
 const LoginForm = () => {
+  const dispatch = useDispatch();
+
   const initialFormValues = {
     email: "",
     password: "",
@@ -23,11 +29,19 @@ const LoginForm = () => {
       .required("Password is required"),
   });
   const handleSubmit = (values, actions) => {
-    console.log(values);
-    toast.loading("Logging in...", { id: "loginToast" });
-    setTimeout(() => {
-      toast.success("Logged in successfully!", { id: "loginToast" });
-    }, 4000);
+    dispatch(signIn(values))
+      .then((result) => {
+        console.log("Login Result:", result);
+        toast.success("Logged in successfully!");
+      })
+      .catch((err) => {
+        console.error("Login Error:", err);
+        toast.error(`Login failed: ${err}`);
+      })
+      .finally(() => {
+        toast.loading("Logging in...");
+      });
+
     actions.setSubmitting(false);
   };
   return (
