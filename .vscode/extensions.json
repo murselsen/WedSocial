@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "ms-vscode.remote-repositories",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-azuretools.vscode-docker",
+    "eamodio.gitlens",
+    "ms-vscode.vscode-typescript-next",
+    "formulahendry.auto-close-tag"
+  ]
+}
