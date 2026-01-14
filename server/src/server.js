@@ -14,7 +14,7 @@ import {
 } from "./middlewares/index.js";
 
 // Routers
-import { authRouter } from "./routers/index.js";
+import appRouter from "./routers/index.js";
 
 // Utils
 import { env } from "./utils/index.js";
@@ -41,7 +41,7 @@ export const initServer = async () => {
     }
   });
 
-  app.use("/auth", authRouter);
+  app.use("/api", appRouter);
 
   app.use(loggerMiddleware);
   app.use(notFoundMiddleware);
