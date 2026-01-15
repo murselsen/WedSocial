@@ -11,7 +11,6 @@ export const signIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const response = await authApi.post("sign-in", credentials);
-      console.log("SignIn Response:", response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data.error.message[0]);
