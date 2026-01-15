@@ -5,6 +5,8 @@ import toast, { Toaster } from "react-hot-toast";
 import PublicLayout from "./components/Layout/Public/Public";
 import PrivateLayout from "./components/Layout/Private/Private";
 
+// Pages
+const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/Login"));
 const Register = lazy(() => import("./pages/Register"));
 
@@ -15,7 +17,7 @@ const App = () => {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route element={<PublicLayout />}>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Route>
