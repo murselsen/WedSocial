@@ -1,0 +1,133 @@
+.form {
+    margin: auto;
+    width: max-content;
+    min-width: 600px;
+    height: max-content;
+    background-color: #0e1823db;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    padding: 40px 80px;
+}
+
+.form-header-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 20px;
+    user-select: none;
+}
+
+.form-header-area .form-logo-title {
+    color: var(--color);
+    font-size: 2.3rem;
+    font-weight: bold;
+    font-family: "Dancing Script", cursive;
+    text-shadow: 5px 6px 5px #f7f3f315;
+    margin: 0;
+}
+
+.form-header-area .form-logo-title span {
+    color: #e4ca73c0;
+}
+
+.form-row-group {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+
+}
+
+.form-area {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+
+.form-area .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    user-select: none;
+    width: 100%;
+}
+
+.form-area .form-group .form-label {
+    font-size: 1.5rem;
+    padding-inline-start: 5px;
+    font-weight: 600;
+    color: var(--color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-error-message {
+    font-size: 1.1rem;
+    color: rgba(255, 0, 0, 0.778);
+    font-weight: normal;
+}
+
+.form-area .form-group .form-input {
+    padding: 10px;
+    font-size: 1.15rem;
+    border-radius: 5px;
+    border: none;
+}
+
+.form-area .form-group .form-input:focus {
+    outline: 1px solid var(--color);
+}
+
+.form-area .form-group .form-submit-button {
+    padding: 15px;
+    font-size: 1.2rem;
+    background-color: var(--color);
+    color: var(--background-color);
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 1.3s ease;
+    user-select: none;
+}
+
+.form-area .form-group .form-submit-button:hover {
+    padding: 13px;
+    background-color: var(--background-color);
+    color: var(--color);
+    border: 1px solid var(--color);
+    font-weight: bold;
+}
+
+.form-area .form-group .form-switch-link {
+    width: 100%;
+    padding: 13px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--color);
+    background-color: var(--background-color);
+    cursor: pointer;
+    transition: all 1.3s ease;
+    user-select: none;
+}
+
+.form-area .form-group .form-switch-link:hover {
+    padding: 13px;
+    background-color: #383b3e3e;
+    box-shadow: 2px 1px 10px #050505a8;
+    color: var(--color);
+    font-weight: bold;
+}
+
+.form-footer-area {
+    user-select: none;
+}
