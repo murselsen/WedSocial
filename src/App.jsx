@@ -11,6 +11,7 @@ import PublicLayout from "./components/Layout/Public/Public";
 import PrivateLayout from "./components/Layout/Private/Private";
 
 const Login = lazy(() => import("./pages/Login"));
+const Portfolio = lazy(() => import("./pages/Portfolio"));
 
 const App = () => {
   toast("Welcome to WedSocial!");
@@ -20,6 +21,7 @@ const App = () => {
         <Routes>
           <Route element={<PublicLayout />}>
             <Route path="/" element={<Login />} />
+            <Route path="/portfolio" element={<Portfolio />} />
           </Route>
           <Route element={<PrivateLayout />}>
             {/* Private routes go here */}
