@@ -1,53 +1,73 @@
 // Css
-import "./LoginForm.css";
+import "./styles.css";
 // Assets
 import logo from "../../assets/logo-trans.png";
 
 // Modules
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
+// import { useDispatch, useSelector } from "react-redux";
 
-// Login Form Component - Renders the login form UI
-const LoginForm = () => {
-  const initialFormValues = {
-    email: "",
-    password: "",
-  };
-  const validateFormSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Invalid email address")
-      .required("Email is required"),
-    password: Yup.string()
-      .min(6, "Password must be at least 6 characters")
-      .required("Password is required"),
-  });
-  const handleSubmit = (values, actions) => {
-    console.log(values);
-    toast.loading("Logging in...", { id: "loginToast" });
-    setTimeout(() => {
-      toast.success("Logged in successfully!", { id: "loginToast" });
-    }, 4000);
-    actions.setSubmitting(false);
-  };
+const RegisterForm = () => {
+  const validateFormSchema = "";
+  const initialFormValues = {};
+  const handleSubmit = () => {};
+
   return (
-    <div className="login-form">
+    <div className="form">
       <div className="form-header-area">
         <img src={logo} alt="WedSocial Logo" className="form-logo-image" />
         <h1 className="form-logo-title">
           Wedding <span>Social</span>
         </h1>
       </div>
-      <p>Welcome to WedSocial! Please log in to continue.</p>
+      <p>Welcome to WedSocial! Please register to continue.</p>
       <Formik
         validationSchema={validateFormSchema}
         initialValues={initialFormValues}
         onSubmit={handleSubmit}
       >
         <Form className="form-area">
+          <div className="form-row-group">
+            <div className="form-group">
+              <label htmlFor="name" className="form-label">
+                <span>Name Surname:</span>
+                <ErrorMessage
+                  component={"span"}
+                  className="form-error-message"
+                  name="name"
+                />
+              </label>
+              <Field
+                type="text"
+                id="name"
+                name="name"
+                className="form-input"
+                placeholder="Please enter your full name..."
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="username" className="form-label">
+                <span>Username:</span>
+                <ErrorMessage
+                  component={"span"}
+                  className="form-error-message"
+                  name="username"
+                />
+              </label>
+              <Field
+                type="text"
+                id="username"
+                name="username"
+                className="form-input"
+                placeholder="Please enter your username..."
+              />
+            </div>
+          </div>
           <div className="form-group">
             <label htmlFor="email" className="form-label">
-              <span>Email:</span>{" "}
+              <span>Email:</span>
               <ErrorMessage
                 component={"span"}
                 className="form-error-message"
@@ -64,7 +84,7 @@ const LoginForm = () => {
           </div>
           <div className="form-group">
             <label htmlFor="password" className="form-label">
-              <span>Password:</span>{" "}
+              <span>Password:</span>
               <ErrorMessage
                 component={"span"}
                 className="form-error-message"
@@ -82,8 +102,11 @@ const LoginForm = () => {
           </div>
           <div className="form-group">
             <button type="submit" className="form-submit-button">
-              Log In
+              Sign Up
             </button>
+            <a href="/login" className="form-switch-link">
+              Sign In
+            </a>
           </div>
         </Form>
       </Formik>
@@ -95,5 +118,4 @@ const LoginForm = () => {
     </div>
   );
 };
-
-export default LoginForm;
+export default RegisterForm;

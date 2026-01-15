@@ -1,0 +1,19 @@
+.logo {
+    width: 200px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.logo-image {
+    width: 100px;
+    height: auto;
+}
+
+.logo-title {
+    font-size: 1.75rem;
+    font-weight: 900;
+    text-shadow: 1.5px 1px 0.5px #fcfcfc;
+    text-transform: capitalize;
+}
