@@ -1,0 +1,21 @@
+.hero {
+    background-image: url('../../assets/Generated_Image_73uisq73uisq73ui.png');
+
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip: border-box;
+
+    /* width: 100vw; */
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-title {
+    color: white;
+    font-size: 3rem;
+    font-family: 'Playfair Display', serif;
+}
