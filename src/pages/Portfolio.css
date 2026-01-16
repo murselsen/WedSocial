@@ -1,0 +1,125 @@
+.portfolio-page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0e1823 0%, #1f2a36 100%);
+    padding: 60px 20px;
+}
+
+.portfolio-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.portfolio-header {
+    text-align: center;
+    margin-bottom: 60px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.portfolio-header h1 {
+    font-family: "Dancing Script", cursive;
+    font-size: 4rem;
+    color: var(--color);
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-header p {
+    font-size: 1.3rem;
+    color: rgba(228, 202, 115, 0.8);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.portfolio-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.filter-button {
+    padding: 12px 30px;
+    background-color: rgba(228, 202, 115, 0.1);
+    color: var(--color);
+    border: 2px solid rgba(228, 202, 115, 0.3);
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.filter-button:hover {
+    background-color: rgba(228, 202, 115, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(228, 202, 115, 0.2);
+}
+
+.filter-button.active {
+    background-color: var(--color);
+    color: var(--background-color);
+    border-color: var(--color);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    animation: fadeIn 1.4s ease-out;
+}
+
+.loading-message,
+.error-message,
+.empty-message {
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 1.4rem;
+    color: var(--color);
+}
+
+.error-message {
+    color: #ff5a5f;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .portfolio-header h1 {
+        font-size: 3rem;
+    }
+
+    .portfolio-header p {
+        font-size: 1.1rem;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .filter-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
