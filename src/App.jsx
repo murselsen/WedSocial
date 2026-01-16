@@ -16,8 +16,8 @@ const App = () => {
     <>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route element={<PublicLayout />}>
-            <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
           </Route>
